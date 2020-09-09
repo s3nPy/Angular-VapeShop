@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col s6 offset-s3">
+    <form class="z-depth-2" [formGroup]="form" (submit)="submit()">
+      <h4>Вход в админку</h4>
+
+      <hr />
+
+      <div *ngIf="auth.error$ | async as error">
+        <p class="error-message">{{error}}</p>
+        <hr />
+      </div>
+
+      <div>
+        <label for="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+        >
+        <div *ngIf="form.get('email').touched && form.get('email').invalid" class="validator">
+          <p *ngIf="form.get('email').errors.required">
+            <small>Введите электронную почту</small>
+          </p>
+
+          <p *ngIf="form.get('email').errors.email">
+            <small>Неправильный формат. Пример: <i>example@mail.com</i></small>
+          </p>
+        </div>
+      </div>
+
+      <div>
+        <label for="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+        >
+
+        <div *ngIf="form.get('password').touched && form.get('password').invalid" class="validator">
+          <p *ngIf="form.get('password').errors.required">
+            <small>Введите пароль</small>
+          </p>
+
+          <p *ngIf="form.get('password').errors.minlength">
+            <small>
+              Введите ещё {{
+                form.get('password').errors.minlength.requiredLength -
+                form.get('password').errors.minlength.actualLength
+              }} символов
+            </small>
+          </p>
+        </div>
+      </div>
+
+      <button
+        class="btn"
+        type="submit"
+        [disabled]="form.invalid || submitted"
+      >
+        Войти
+      </button>
+    </form>
+  </div>
+</div>
+
+

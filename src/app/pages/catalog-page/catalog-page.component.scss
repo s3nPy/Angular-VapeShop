@@ -1,0 +1,17 @@
+
+
+.items-container {
+  display: flex;
+  margin: -.5rem;
+  flex-wrap: wrap;
+  max-width: 100%;
+
+  .item {
+    width: 200px;
+    height: 300px;
+    margin: .5rem;
+
+    outline: none;
+    user-select: none;
+  }
+}

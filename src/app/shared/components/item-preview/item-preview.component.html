@@ -1,0 +1,10 @@
+<div class="item-preview center-align z-depth-1">
+
+  <img [src]="item.url" alt="">
+
+  <p>{{item.name}}</p>
+  <p><strong>{{item.cost}} ₽</strong></p>
+  <p><small>
+    {{item.amount ? 'В наличии' : 'Закончились'}}
+  </small></p>
+</div>

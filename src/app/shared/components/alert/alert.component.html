@@ -1,0 +1,9 @@
+<div class="alert-wrapper">
+  <div
+    *ngIf="alert.text"
+    class="alert"
+    [attr.data-type]="alert.type"
+  >
+    {{alert.text}}
+  </div>
+</div>

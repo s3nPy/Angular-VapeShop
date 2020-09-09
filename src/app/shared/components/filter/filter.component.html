@@ -1,0 +1,9 @@
+<form class="form-filter" [formGroup]="form" (change)="change()">
+  <p><strong>{{title}}</strong></p>
+  <p *ngFor="let value of values">
+    <label>
+      <input type="radio" [value]="value" checked [formControlName]="name"/>
+      <span>{{value}}</span>
+    </label>
+  </p>
+</form>

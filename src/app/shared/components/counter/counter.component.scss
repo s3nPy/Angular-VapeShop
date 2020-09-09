@@ -1,0 +1,33 @@
+div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  max-width: 100%;
+  border: 1px solid black;
+  border-radius: .5rem;
+  user-select: none;
+
+  & > strong {
+    font-size: 1.5rem;
+  }
+
+  i:first-of-type, i:last-of-type {
+    padding: .5rem 1rem;
+    cursor: pointer;
+
+    &:hover {
+      opacity: .6;
+    }
+  }
+
+  i:first-of-type {
+    border-right: 1px dashed black;
+    color: red;
+  }
+
+  i:last-of-type {
+    border-left: 1px dashed black;
+    color: green;
+  }
+}

@@ -1,0 +1,25 @@
+<nav class="navbar-fixed nav-wrapper">
+  <a href="#" class="brand-logo left">Angular VapeShop</a>
+
+  <ul>
+    <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <a href="#" [routerLink]="['/']">Главная</a>
+    </li>
+    <li routerLinkActive="active">
+      <a href="#" [routerLink]="['catalog']">Каталог</a>
+    </li>
+    <li routerLinkActive="active">
+      <a href="#" [routerLink]="['about']">О нас</a>
+    </li>
+    <li routerLinkActive="active">
+      <a href="#" [routerLink]="['basket']"><i class="material-icons">shopping_cart</i></a>
+    </li>
+  </ul>
+</nav>
+
+
+<div class="container">
+  <app-alert></app-alert>
+  <router-outlet></router-outlet>
+</div>
+

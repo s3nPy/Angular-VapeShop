@@ -1,0 +1,97 @@
+<div class="row valign-wrapper">
+  <div class="col s3">
+    <p class="header"><strong>Корзина</strong></p>
+  </div>
+  <div class="col s3 offset-s6">
+    <button
+      class="btn-link"
+      (click)="clear()"
+    >
+      Очистить корзину
+    </button>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col s12">
+    <div *ngIf="basket; else loading">
+      <div *ngIf="basket.length; else empty">
+        <table>
+          <thead>
+            <tr>
+              <th>Товар</th>
+              <th>Кол-во</th>
+              <th>Цена</th>
+              <th>Действие</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let basketItem of basket">
+              <td>
+                <div class="valign-wrapper">
+                  <img
+                    class="circle"
+                    [src]="basketItem.item ? basketItem.item.url : 'https://pluralsight.imgix.net/paths/path-icons/angular-14a0f6532f.png'"
+                    alt=""
+                  >
+                  <a href="#" [routerLink]="['/catalog', basketItem.id]">
+                    {{basketItem.item ? basketItem.item.name : 'Идет загрузка...'}}
+                  </a>
+                </div>
+              </td>
+              <td><strong>{{basketItem.amount}}</strong></td>
+              <td><strong>{{basketItem.item ? basketItem.item.cost : '...'}} ₽</strong></td>
+              <td>
+                <button class="btn-link" (click)="removeItem(basketItem.id  )">Убрать</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Итого:&nbsp;<strong>{{total}} ₽</strong></p>
+      </div>
+
+      <ng-template #empty>
+        <p>Корзина пуста :(</p>
+      </ng-template>
+    </div>
+
+    <ng-template #loading>
+      <p>Идет загрузка...</p>
+    </ng-template>
+
+    <hr />
+  </div>
+</div>
+
+<div *ngIf="basket && basket.length">
+  <div class="row">
+    <div class="col s12">
+      <h4>Заказать</h4>
+    </div>
+
+    <form [formGroup]="form" (submit)="submitOrder()">
+      <div>
+        <div class="col s4">
+          <label for="email">Email</label>
+          <input type="text" id="email" formControlName="email">
+        </div>
+
+        <div class="col s4">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" formControlName="phone">
+        </div>
+      </div>
+
+      <button
+        class="col s4 btn btn-order"
+        [disabled]="form.invalid"
+        type="submit"
+      >
+        Заказать
+      </button>
+    </form>
+  </div>
+</div>
+
+

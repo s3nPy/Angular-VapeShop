@@ -1,0 +1,101 @@
+
+<div class="row">
+  <div class="col s12">
+    <form class="form-group z-depth-2" [formGroup]="form" (submit)="submit()">
+      <h4>Добавить товар</h4>
+
+      <hr />
+
+      <div class="row">
+        <div class="col s12">
+          <label for="name">Название</label>
+          <input type="text" id="name" formControlName="name">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12">
+          <label for="description">Описание</label>
+          <textarea
+            class="materialize-textarea"
+            id="description"
+            formControlName="description"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="row valign-wrapper">
+        <div class="col s10">
+            <label for="url">URL Картинки</label>
+            <input type="url" id="url" formControlName="url">
+        </div>
+        <div class="col s2">
+          <img [src]="form.get('url').value" alt="">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12">
+          <label for="type">Тип товара</label>
+          <select (change)="changeFeatures()" id="type" class="browser-default" formControlName="type">
+            <option value="" disabled selected>Выберите тип товара</option>
+            <option value="Жидкость">Жидкость</option>
+            <option value="Вейп">Вейп</option>
+          </select>
+
+
+          <div
+            *ngIf="features.controls.length"
+            class="form-group"
+            formArrayName="features"
+          >
+            <h6>Характеристики</h6>
+
+            <hr />
+
+            <div *ngFor="let feature of features.controls; let i = index">
+              <div [formGroupName]="i">
+                <label [for]="'feature'+i">{{feature.value.name}}</label>
+                <input [id]="'feature'+i" type="text" formControlName="value">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s6">
+          <label for="cost">Цена</label>
+          <input type="number" id="cost" formControlName="cost">
+        </div>
+        <div class="col s6">
+          <label for="amount">Количество</label>
+          <input type="number" id="amount" formControlName="amount">
+        </div>
+      </div>
+
+      <div class="flex-between">
+        <button
+          class="waves-effect waves-light btn"
+          [disabled]="form.invalid || submitted"
+        >
+          Добавить
+        </button>
+        <div
+          *ngIf="submitted"
+          class="preloader-wrapper small active"
+        >
+          <div class="spinner-layer spinner-green-only">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

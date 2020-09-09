@@ -1,0 +1,61 @@
+
+<div class="row">
+  <div class="col s12">
+    <h3>Каталог товаров</h3>
+  </div>
+</div>
+
+
+
+
+<div class="row">
+  <div class="col s3">
+    <div class="flex-between">
+      <h5>Фильтры</h5>
+      <button class="btn-link" (click)="resetFilters()">сбросить</button>
+    </div>
+
+    <div *ngIf="mainFilterFields; else loading">
+      <app-filter #filter
+        [title]="mainFilterFields.title"
+        [name]="mainFilterFields.name"
+        [values]="mainFilterFields.values"
+        (choice)="updateFeatureFilters($event)"
+      ></app-filter>
+
+      <app-filter
+        *ngFor="let featureFilter of featureFilterFields"
+        [title]="featureFilter.title"
+        [name]="featureFilter.name"
+        [values]="featureFilter.values"
+        (choice)="applyFilter($event, 'features')"
+      ></app-filter>
+    </div>
+  </div>
+
+  <div class="col s9">
+    <h5>Товары</h5>
+
+    <div *ngIf="items; else loading">
+      <div *ngIf="items.length; else empty">
+        <div class="items-container">
+          <app-item-preview
+            class="item"
+            *ngFor="let item of items | filter:filter"
+            [item]="item"
+            [routerLink]="['/catalog', item.id]"
+          >
+          </app-item-preview>
+        </div>
+      </div>
+
+      <ng-template #empty>
+        <p>В катологе нет товаров</p>
+      </ng-template>
+    </div>
+
+    <ng-template #loading>
+      <p>Идет загрузка...</p>
+    </ng-template>
+  </div>
+</div>

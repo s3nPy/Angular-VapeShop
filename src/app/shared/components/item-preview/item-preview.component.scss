@@ -1,0 +1,22 @@
+.item-preview {
+  border: 1px dashed #ccc;
+  padding: 0 .5rem;
+  cursor: pointer;
+  transition: all .2s ease;
+  height: 100%;
+
+  img {
+    max-width: 150px;
+    max-height: 150px;
+    margin: .5rem;
+    transition: transform 1s ease;
+  }
+
+  &:hover {
+    border-color: black;
+
+    img {
+      transform: scale(1.09);
+    }
+  }
+}

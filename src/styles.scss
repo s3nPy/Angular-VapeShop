@@ -1,0 +1,67 @@
+/* You can add global styles to this file, and also import other style files */
+// @import '~materialize-css/dist/css/materialize.min.css';
+@import '~materialize-css/sass/materialize.scss';
+
+
+nav{
+  @extend .grey, .darken-3;
+
+  i.material-icons {
+    height: 64px;
+    line-height: 64px;
+  }
+}
+
+input[type="radio"]:checked + span:after {
+  background-color: rgb(90, 69, 211);
+}
+
+
+table {
+  img {
+    max-height: 3rem;
+    max-width: 3rem;
+  }
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ng-touched.ng-invalid {
+  @extend .invalid;
+}
+
+.ng-touched.ng-valid {
+  @extend .valid;
+}
+
+
+.btn {
+  background-color: rgb(74, 57, 172);
+
+  &:hover {
+    background-color: rgb(90, 69, 211);
+  }
+}
+
+.btn-link {
+  color: rgb(122, 122, 122);
+  border: none;
+  background: none;
+  cursor: pointer;
+
+  &:active, &:focus {
+    background: none;
+  }
+
+  &:active {
+    color: #ccc;
+  }
+
+  &:hover {
+    opacity: .8;
+  }
+}

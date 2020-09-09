@@ -1,0 +1,29 @@
+<nav class="navbar-fixed nav-wrapper grey darken-3">
+  <a
+    href="/admin"
+    [routerLink]="['/admin']"
+    class="brand-logo"
+    [class.left]="auth.isAuthenticated()"
+  >
+    Angular VapeShop Admin
+  </a>
+
+  <ul class="right" *ngIf="auth.isAuthenticated()">
+    <li routerLinkActive="active">
+      <a href="/admin/orders" [routerLink]="['/admin', 'orders']">Заказы</a>
+    </li>
+    <li routerLinkActive="active">
+      <a href="/admin/items" [routerLink]="['/admin', 'items']">Все товары</a>
+    </li>
+    <li routerLinkActive="active">
+      <a href="/admin/create" [routerLink]="['/admin', 'create']">Добавить</a>
+    </li>
+    <li><a href="#" (click)="logout($event)"><i class="material-icons">exit_to_app</i></a></li>
+  </ul>
+</nav>
+
+
+<div class="container">
+  <app-alert></app-alert>
+  <router-outlet></router-outlet>
+</div>

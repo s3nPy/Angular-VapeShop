@@ -1,0 +1,29 @@
+
+<div class="row">
+  <div class="col s12">
+
+    <h3>Новинки</h3>
+
+    <div
+      *ngFor="let item of items"
+      class="card-news row z-depth-2"
+    >
+      <div class="col s5 center-wrapper">
+       <img [src]="item.url" alt="">
+      </div>
+      <div class="col s7">
+        <h5 class="flex-between">
+          {{item.name}}
+          <small>{{item.date | date:'dd.MM.yyyy'}}</small>
+        </h5>
+        <div class="overflow">
+          <p>{{item.description}}</p>
+        </div>
+        <a class="btn" [routerLink]="['/catalog', item.id]">
+          Подробнее
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>

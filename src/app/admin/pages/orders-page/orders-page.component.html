@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col s12">
+    <h4>Заказы</h4>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Почта</th>
+          <th>Телефон</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders">
+          <td>{{order.email}}</td>
+          <td>{{order.phone}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
